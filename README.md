@@ -11,7 +11,7 @@ tl;dr just want to dj with the latest image: [instructions](https://github.com/f
 
 This repo is for the generation of a raspbian image for Mixxx.
 Included:
-- Mixxx 2.5.6 built from the [Mixxx](https://mixxx.org) repo (pinned tag, see `stage3/01-install-packages/01-run.sh`)
+- Mixxx 2.5.6 + memory cue patches, built from the [JUSTIVE/mixxx](https://github.com/JUSTIVE/mixxx) fork (`memory-cues` branch, see `stage3/01-install-packages/01-run.sh`)
 - 64 bit Raspberry Pi OS (Debian 13 "trixie")
 - preempt=full commandline argument on standard kernel and performance CPU governer as standard
 - sway (i3 for wayland) window manager with autostart to Mixxx
