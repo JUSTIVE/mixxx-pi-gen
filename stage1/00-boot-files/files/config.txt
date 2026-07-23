@@ -54,7 +54,7 @@ dtparam=audio=on
 # /boot/firmware/overlays/README
 
 # Automatically load overlays for detected cameras
-camera_auto_detect=1
+camera_auto_detect=0
 
 # Automatically load overlays for detected DSI displays
 display_auto_detect=1
@@ -78,6 +78,10 @@ disable_overscan=1
 
 # Run as fast as firmware / board allows
 arm_boost=1
+
+# Boot speed: skip the rainbow splash and the 1s boot delay.
+disable_splash=1
+boot_delay=0
 
 [cm4]
 # Enable host mode on the 2711 built-in XHCI USB controller.
