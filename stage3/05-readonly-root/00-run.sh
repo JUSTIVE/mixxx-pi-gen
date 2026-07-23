@@ -54,10 +54,9 @@ on_chroot << 'EOF'
     # power must never auto-flash its EEPROM. Disable it.
     systemctl disable rpi-eeprom-update.service 2>/dev/null || true
 
-    # Give the image a stable machine-id. Empty under pi-gen, it would be
-    # regenerated into the tmpfs overlay on every boot, making systemd treat
-    # each boot as a first boot. Commit one into the read-only image.
-    systemd-machine-id-setup
+    # (A stable machine-id is also required under the overlay, but it is seeded
+    # in export-image/05-finalise -- that stage deletes machine-id last, so it
+    # must be re-created there rather than here.)
 
     # Rebuild the initramfs for each installed kernel so the overlay script and
     # module are included. Explicit -k per kernel avoids uname -r. The

@@ -49,6 +49,17 @@ rm -f "${ROOTFS_DIR}"/usr/share/icons/*/icon-theme.cache
 rm -f "${ROOTFS_DIR}/var/lib/dbus/machine-id"
 rm -f "${ROOTFS_DIR}/etc/machine-id"
 
+# Appliance override for the read-only overlay: pi-gen normally leaves
+# machine-id absent so systemd generates a unique one into a writable /etc on
+# first boot. Under our overlay /etc lives in tmpfs and is discarded every
+# power-off, so that "first boot" generation happens on EVERY boot -- systemd
+# then re-runs first-boot units and the id is never stable. Bake a fixed id
+# into the read-only image instead. (Re-seeded here, after the removals above,
+# because any earlier seed would be deleted by them.)
+FLXTRA_MACHINE_ID="$(head -c16 /dev/urandom | od -An -tx1 | tr -d ' \n')"
+echo "${FLXTRA_MACHINE_ID}" > "${ROOTFS_DIR}/etc/machine-id"
+ln -nsf /etc/machine-id "${ROOTFS_DIR}/var/lib/dbus/machine-id"
+
 ln -nsf /proc/mounts "${ROOTFS_DIR}/etc/mtab"
 
 find "${ROOTFS_DIR}/var/log/" -type f -exec cp /dev/null {} \;
