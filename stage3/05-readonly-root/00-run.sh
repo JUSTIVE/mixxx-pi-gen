@@ -45,6 +45,20 @@ on_chroot << 'EOF'
     ssh-keygen -A
     systemctl disable regenerate_ssh_host_keys 2>/dev/null || true
 
+    # The EEPROM auto-updater is the worst offender under the overlay and the
+    # reason a power-cycle bricked boot: `rpi-eeprom-update -s -a` stages a
+    # bootloader update into the (persistent) FAT partition on first boot, and
+    # the next boot drops into EEPROM self-update mode -- which looks like a
+    # dead board (no display). Its "done" state lives in the tmpfs overlay, so
+    # it re-stages on every boot. An appliance that is turned off by pulling
+    # power must never auto-flash its EEPROM. Disable it.
+    systemctl disable rpi-eeprom-update.service 2>/dev/null || true
+
+    # Give the image a stable machine-id. Empty under pi-gen, it would be
+    # regenerated into the tmpfs overlay on every boot, making systemd treat
+    # each boot as a first boot. Commit one into the read-only image.
+    systemd-machine-id-setup
+
     # Rebuild the initramfs for each installed kernel so the overlay script and
     # module are included. Explicit -k per kernel avoids uname -r. The
     # raspi-firmware hook copies the result to /boot/firmware/initramfs{8,_2712}.
