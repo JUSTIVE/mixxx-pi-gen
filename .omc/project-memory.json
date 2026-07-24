@@ -1,0 +1,136 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1784831428523,
+  "projectRoot": "/Users/ben/git/personal/flxtra/mixxx-pi-gen",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "scripts"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "deploy": {
+      "path": "deploy",
+      "purpose": null,
+      "fileCount": 20,
+      "lastAccessed": 1784831428517,
+      "keyFiles": [
+        "2026-07-22-mixxx-pi-mixxx.tag",
+        "2026-07-22-mixxx-pi-mixxx.version",
+        "2026-07-22-mixxx-pi.info",
+        "2026-07-23-mixxx-pi-mixxx.tag",
+        "2026-07-23-mixxx-pi-mixxx.version"
+      ]
+    },
+    "export-image": {
+      "path": "export-image",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1784831428517,
+      "keyFiles": [
+        "prerun.sh"
+      ]
+    },
+    "scripts": {
+      "path": "scripts",
+      "purpose": "Build/utility scripts",
+      "fileCount": 4,
+      "lastAccessed": 1784831428517,
+      "keyFiles": [
+        "common",
+        "dependencies_check",
+        "qcow2_handling",
+        "remove-comments.sed"
+      ]
+    },
+    "stage0": {
+      "path": "stage0",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1784831428518,
+      "keyFiles": [
+        "prerun.sh"
+      ]
+    },
+    "stage1": {
+      "path": "stage1",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1784831428518,
+      "keyFiles": [
+        "prerun.sh"
+      ]
+    },
+    "stage2": {
+      "path": "stage2",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1784831428518,
+      "keyFiles": [
+        "prerun.sh"
+      ]
+    },
+    "stage3": {
+      "path": "stage3",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1784831428518,
+      "keyFiles": [
+        "EXPORT_IMAGE",
+        "prerun.sh"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "export-image/05-finalise/01-run.sh",
+      "accessCount": 2,
+      "lastAccessed": 1784832198796,
+      "type": "file"
+    },
+    {
+      "path": "stage3/03-kernel-setup/00-run.sh",
+      "accessCount": 2,
+      "lastAccessed": 1784855185877,
+      "type": "file"
+    },
+    {
+      "path": "stage3/05-readonly-root/00-run.sh",
+      "accessCount": 1,
+      "lastAccessed": 1784832205553,
+      "type": "file"
+    },
+    {
+      "path": "stage3/04-enable-wayland/02-run.sh",
+      "accessCount": 1,
+      "lastAccessed": 1784855191030,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
